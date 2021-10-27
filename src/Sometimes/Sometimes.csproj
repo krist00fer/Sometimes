@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.0.1</Version>
+    <Authors>Kristofer Liljeblad</Authors>
+    <Description>Extends functionality around dates and times... sometimes</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/krist00fer/Sometimes</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/krist00fer/Sometimes</RepositoryUrl>
+    <RepositoryType />
+    <PackageTags>C#; DateTime; Sometimes; Date; Time</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
