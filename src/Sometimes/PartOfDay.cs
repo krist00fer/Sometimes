@@ -2,26 +2,26 @@
 
 namespace Sometimes
 {
-    public class TimeSpanOfDay
+    public class PartOfDay
     {
         public TimeSpan From { get; private set; }
         public TimeSpan To { get; private set; }
 
-        public TimeSpanOfDay(TimeSpan from, TimeSpan to)
+        public PartOfDay(TimeSpan from, TimeSpan to)
         {
             From = from.Mod24hClock();
             To = to.Mod24hClock();
         }
 
-        public TimeSpanOfDay(int fromHours, int toHours)
+        public PartOfDay(int fromHours, int toHours)
             : this(TimeSpan.FromHours(fromHours), TimeSpan.FromHours(toHours))
         { }
 
-        public TimeSpanOfDay(int fromHours, int fromMinutes, int toHours, int toMinutes)
+        public PartOfDay(int fromHours, int fromMinutes, int toHours, int toMinutes)
             : this(new TimeSpan(fromHours, fromMinutes, 0), new TimeSpan(toHours, toMinutes, 0))
         { }
 
-        public TimeSpanOfDay(int fromHours, int fromMinutes, int fromSeconds, int toHours, int toMinutes, int toSeconds)
+        public PartOfDay(int fromHours, int fromMinutes, int fromSeconds, int toHours, int toMinutes, int toSeconds)
             : this(new TimeSpan(fromHours, fromMinutes, fromSeconds), new TimeSpan(toHours, toMinutes, toSeconds))
         { }
 
@@ -57,5 +57,4 @@ namespace Sometimes
             return IsWithin(dateTime.TimeOfDay);
         }
     }
-
 }

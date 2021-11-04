@@ -41,7 +41,5 @@ namespace Sometimes.Tests
 
             Assert.Equal(new TimeSpan(21, 0, 0), result);
         }
-
-
     }
 }
