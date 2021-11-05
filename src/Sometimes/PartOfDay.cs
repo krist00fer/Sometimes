@@ -25,7 +25,7 @@ namespace Sometimes
             : this(new TimeSpan(fromHours, fromMinutes, fromSeconds), new TimeSpan(toHours, toMinutes, toSeconds))
         { }
 
-        public bool IsWithin(TimeSpan time)
+        public bool Includes(TimeSpan time)
         {
             var t = time.Mod24hClock();
 
@@ -37,24 +37,49 @@ namespace Sometimes
                     (TimeSpan.Zero <= t && t < To);
         }
 
-        public bool IsWithin(int hours)
+        public bool Includes(int hours)
         {
-            return IsWithin(TimeSpan.FromHours(hours));
+            return Includes(TimeSpan.FromHours(hours));
         }
 
-        public bool IsWithin(int hours, int minutes)
+        public bool Includes(int hours, int minutes)
         {
-            return IsWithin(new TimeSpan(hours, minutes, 0));
+            return Includes(new TimeSpan(hours, minutes, 0));
         }
 
-        public bool IsWithin(int hours, int minutes, int seconds)
+        public bool Includes(int hours, int minutes, int seconds)
         {
-            return IsWithin(new TimeSpan(hours, minutes, seconds));
+            return Includes(new TimeSpan(hours, minutes, seconds));
         }
 
-        public bool IsWithin(DateTime dateTime)
+        public bool Includes(DateTime dateTime)
         {
-            return IsWithin(dateTime.TimeOfDay);
+            return Includes(dateTime.TimeOfDay);
+        }
+
+        public bool Includes(PartOfDay earlyMorning)
+        {
+            if (earlyMorning.Equals(this))
+                return true; // The same or equal PartOfDay is always included
+
+            return Includes(earlyMorning.From) && Includes(earlyMorning.To);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+
+            if (!(obj is PartOfDay))
+                return false;
+
+            return (this.From == ((PartOfDay)obj).From) &&
+                (this.To == ((PartOfDay)obj).To);
+        }
+
+        public override int GetHashCode()
+        {
+            return To.GetHashCode() ^ From.GetHashCode();
         }
     }
 }

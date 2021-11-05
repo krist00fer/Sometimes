@@ -6,30 +6,30 @@ namespace Sometimes.Tests
     public class PartOfDayFluentApiTests
     {
         [Fact]
-        public void FluentAPITimeStampWithin()
+        public void FluentAPITimeStampIsDuring()
         {
             var morning = new PartOfDay(6, 10);
             var sevenOClock = new TimeSpan(7, 0, 0);
 
-            Assert.True(sevenOClock.IsWithin(morning));
+            Assert.True(sevenOClock.IsDuring(morning));
         }
 
         [Fact]
-        public void FluentAPIIntWithin()
+        public void FluentAPIIntIsDuring()
         {
-            var morning = new PartOfDay(6, 10);
-            var sevenOClock = 7;
+            var afternoon = new PartOfDay(12, 17);
+            var threeInTheAfternoon = 15;
 
-            Assert.True(sevenOClock.IsWithin(morning));
+            Assert.True(threeInTheAfternoon.IsDuring(afternoon));
         }
 
         [Fact]
-        public void FluentAPIDateTimeWithin()
+        public void FluentAPIDateTimeIsDuring()
         {
-            var morning = new PartOfDay(6, 10);
-            var dt = new DateTime(1974, 08, 26, 7, 0, 0);
+            var lateAfternoon = new PartOfDay(15, 17);
+            var dt = new DateTime(1974, 08, 26, 15, 30, 0);
 
-            Assert.True(dt.IsWithin(morning));
+            Assert.True(dt.IsDuring(lateAfternoon));
         }
     }
 }

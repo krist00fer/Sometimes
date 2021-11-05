@@ -4,19 +4,19 @@ namespace Sometimes
 {
     public static class PartOfDayFluentApi
     {
-        public static bool IsWithin(this TimeSpan ts, PartOfDay part)
+        public static bool IsDuring(this TimeSpan ts, PartOfDay part)
         {
-            return part.IsWithin(ts);
+            return part.Includes(ts);
         }
 
-        public static bool IsWithin(this int hours, PartOfDay part)
+        public static bool IsDuring(this int hours, PartOfDay part)
         {
-            return part.IsWithin(hours);
+            return part.Includes(hours);
         }
 
-        public static bool IsWithin(this DateTime dateTime, PartOfDay part)
+        public static bool IsDuring(this DateTime dateTime, PartOfDay part)
         {
-            return part.IsWithin(dateTime);
+            return part.Includes(dateTime);
         }
     }
 }
