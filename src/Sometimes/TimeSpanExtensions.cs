@@ -6,9 +6,7 @@ namespace Sometimes
     {
         public static TimeSpan Mod(this TimeSpan span, TimeSpan ts)
         {
-            int x = (int)(span / ts);
-
-            return span - ts * x;
+            return new TimeSpan(span.Ticks % ts.Ticks);
         }
 
         public static TimeSpan Mod24h(this TimeSpan span)
